@@ -132,7 +132,7 @@ public class Problema_7_1 extends JFrame implements ActionListener {
 		limpieza();
 	}
 
-	//  Declaraci n global
+	//  Declaración global
 	ArregloEdades ae = new ArregloEdades();
 	
 	protected void actionPerformedBtnAdicionar(ActionEvent arg0) {
@@ -150,7 +150,7 @@ public class Problema_7_1 extends JFrame implements ActionListener {
 			listar();
 		}
 		else
-			mensaje("el Arreglo est  vac o");		
+			mensaje("el Arreglo está vacío");		
 	}
 	protected void actionPerformedBtnEliminarTodo(ActionEvent arg0) {
 		if (ae.tamanio() > 0) {
@@ -158,36 +158,18 @@ public class Problema_7_1 extends JFrame implements ActionListener {
 			listar();
 		}
 		else
-			mensaje("el Arreglo est  vac o");			
+			mensaje("el Arreglo está vacío");			
 	}
 	protected void actionPerformedBtnRemplazarPrimeraEdadAdolescente(ActionEvent arg0) {
-		if (ae.tamanio() > 0) {
-			ae.remplazarPrimeraEdadAdolescente();
-			listar();
-		}
-		else{
-			mensaje("el Arreglo est  vac o");
-		}
+		
 	}
 	protected void actionPerformedBtnIntercambiarEdadesAdolescentesExtremas(ActionEvent arg0) {
-		if (ae.tamanio() > 0) {
-			ae.intercambiarEdadesAdolescentesExtremas();;
-			listar();
-		}
-		else{
-			mensaje("el Arreglo est  vac o");
-		}
+		
 	}
 	protected void actionPerformedBtnEliminarPrimeraEdadAdolescente(ActionEvent arg0) {
-		if (ae.tamanio() > 0) {
-			ae.eliminarPrimeraEdadAdolescente();
-			listar();
-		}
-		else{
-			mensaje("el Arreglo est  vac o");
-		}
+		
 	}
-	//  M todos tipo void (sin par metros)
+	//  Métodos tipo void (sin parámetros)
 	void imprimir() {
 		imprimir("");
 	}
@@ -200,14 +182,14 @@ public class Problema_7_1 extends JFrame implements ActionListener {
 		for (int i=0; i<ae.tamanio(); i++)
 			imprimir("edad[" + i + "] : " + ae.obtener(i));
 	}
-	//  M todos tipo void (con par metros)
+	//  Métodos tipo void (con parámetros)
 	void imprimir(String s) {
 		txtS.append(s + "\n");
 	}
 	void mensaje(String s) {
 		JOptionPane.showMessageDialog(this, s);
 	}
-	//  M todos que retornan valor (sin par metros)
+	//  Métodos que retornan valor (sin parámetros)
 	int leerEdad()  {
 		return Integer.parseInt(txtEdad.getText().trim());
 	}
