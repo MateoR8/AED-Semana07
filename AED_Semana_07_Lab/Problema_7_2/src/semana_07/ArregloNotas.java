@@ -38,4 +38,56 @@ public class ArregloNotas {
 			nota[i] = aux[i];
 	}
 	
+	public int notaMenor() {
+		int menor = nota[0];
+		for(int i = 1; i <indice; i++) {
+			if(nota[i] < menor) {
+				menor = nota[i];
+			}
+		}
+		
+		return menor;
+	}
+	
+	public int posPrimeraNotaAprobatoria() {
+		for(int i = 0; i<=indice-1; i++) {
+			if(nota[i] >= 13 && nota[i] <= 20) {
+				return i;
+			}
+		}
+		
+		return -1;
+	}
+	
+	public int posUltimaNotaAprobatoria() {
+		for(int i = indice-1; i>=0; i--) {
+			if(nota[i] >= 13 && nota[i] <= 20) {
+				return i;
+			}
+		}
+		
+		return -1;
+	}
+	
+	public void remplazarUltimaNotaAprobatoria() {
+		int num1 = posUltimaNotaAprobatoria();
+		
+		if(num1 != -1) {
+			nota[num1] = notaMenor();
+		}	
+	}
+	
+	private void eliminar(int num1) {
+		for(int i = num1; i <= indice-1; i++) {
+			nota[i] = nota[i+1];
+		}
+		indice--;
+	}
+	
+	public void eliminarPrimeraNotaAprobatoria() {
+		int num1 = posPrimeraNotaAprobatoria();
+		if(num1 != -1) {
+			eliminar(num1);
+		}
+	}
 }

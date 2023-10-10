@@ -104,7 +104,7 @@ public class Problema_7_2 extends JFrame implements ActionListener {
 		scrollPane.setViewportView(txtS);
 	}
 
-	//  Declaraciòn global
+	//  Declaraci n global
 	ArregloNotas an = new ArregloNotas();
 	
 	public void actionPerformed(ActionEvent arg0) {
@@ -140,7 +140,7 @@ public class Problema_7_2 extends JFrame implements ActionListener {
 			listar();
 		}
 		else
-			mensaje("el Arreglo está vacío");		
+			mensaje("el Arreglo est  vac o");		
 	}
 	protected void actionPerformedBtnEliminarTodo(ActionEvent arg0) {
 		if (an.tamanio() > 0) {
@@ -148,15 +148,27 @@ public class Problema_7_2 extends JFrame implements ActionListener {
 			listar();
 		}
 		else
-			mensaje("el Arreglo está vacío");	
+			mensaje("el Arreglo est  vac o");	
 	}
 	protected void actionPerformedBtnRemplazarUltimaNotaAaprobatoria(ActionEvent arg0) {
-	
+		if (an.tamanio() > 0) {
+			an.remplazarUltimaNotaAprobatoria();
+			listar();
+		}
+		else {
+			mensaje("el Arreglo est  vac o");
+			}
 	}
 	protected void actionPerformedBtnEliminarPrimeraNotaAprobatoria(ActionEvent arg0) {
-	
+		if (an.tamanio() > 0) {
+			an.eliminarPrimeraNotaAprobatoria();
+			listar();
+		}
+		else {
+			mensaje("el Arreglo est  vac o");
+			}
 	}
-	//  Métodos tipo void (sin parámetros)
+	//  M todos tipo void (sin par metros)
 	void imprimir() {
 		imprimir("");
 	}
@@ -169,14 +181,14 @@ public class Problema_7_2 extends JFrame implements ActionListener {
 		for (int i=0; i<an.tamanio(); i++)
 			imprimir("nota[" + i + "] : " + an.obtener(i));
 	}
-	//  Métodos tipo void (con parámetros)
+	//  M todos tipo void (con par metros)
 	void imprimir(String s) {
 		txtS.append(s + "\n");
 	}
 	void mensaje(String s) {
 		JOptionPane.showMessageDialog(this, s);
 	}
-	//  Métodos que retornan valor (sin parámetros)
+	//  M todos que retornan valor (sin par metros)
 	int leerNota()  {
 		return Integer.parseInt(txtNota.getText().trim());
 	}
