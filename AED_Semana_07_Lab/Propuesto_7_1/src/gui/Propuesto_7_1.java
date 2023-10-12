@@ -1,5 +1,6 @@
 package gui;
 
+import semana_07.ArregloCodigos;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -59,7 +60,7 @@ public class Propuesto_7_1 extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		lblCodigo = new JLabel("Código");
+		lblCodigo = new JLabel("C digo");
 		lblCodigo.setBounds(10, 10, 46, 23);
 		contentPane.add(lblCodigo);
 
@@ -120,23 +121,58 @@ public class Propuesto_7_1 extends JFrame implements ActionListener {
 		}
 		limpieza();
 	}
+	
+	ArregloCodigos ac = new ArregloCodigos();
 
 	protected void actionPerformedBtnAdicionar(ActionEvent arg0) {
-		
+		try {
+			ac.adicionar(leerCodigo());
+			listar();
+		}
+		catch (Exception e) {
+			mensaje("error de ingreso");
+		}
 	}
 	protected void actionPerformedBtnIntercambiar1(ActionEvent arg0) {
-		
+		if (ac.tamanio() > 0) {
+			ac.intercambiarSegPen();
+			listar();
+		}
+		else {
+			mensaje("Cambio no realizado");	
+		}
 	}
 	protected void actionPerformedBtnEliminar1(ActionEvent arg0) {
+		if (ac.tamanio() > 0) {
+			ac.eliminarPrimero();
+			listar();
+		}
+		else {
+			mensaje("Cambio no realizado");	
+		}
 		
 	}
 	protected void actionPerformedBtnIntercambiar2(ActionEvent arg0) {
+		if (ac.tamanio() > 0) {
+			ac.intercambiarCodigo();
+			listar();
+		}
+		else {
+			mensaje("Cambio no realizado");	
+		}
 		
 	}
 	protected void actionPerformedBtnEliminar2(ActionEvent arg0) {
+		if (ac.tamanio() > 0) {
+			ac.eliminarCodigo();
+			listar();
+		}
+		else {
+			mensaje("Cambio no realizado");	
+		}
 		
 	}
-	//  Métodos tipo void (sin parámetros)
+	//  M todos tipo void (sin par metros)
 	void imprimir() {
 		imprimir("");
 	}
@@ -145,16 +181,18 @@ public class Propuesto_7_1 extends JFrame implements ActionListener {
 		txtCodigo.requestFocus();
 	}
 	void listar() {
-
+		txtS.setText("");
+		for (int i=0; i<ac.tamanio(); i++)
+			imprimir("Codigo[" + i + "] : " + ac.obtener(i));
 	}
-	//  Métodos tipo void (con parámetros)
+	//  M todos tipo void (con par metros)
 	void imprimir(String s) {
 		txtS.append(s + "\n");
 	}
 	void mensaje(String s) {
 		JOptionPane.showMessageDialog(this, s);
 	}
-	//  Métodos que retornan valor (sin parámetros)
+	//  M todos que retornan valor (sin par metros)
 	int leerCodigo()  {
 		return Integer.parseInt(txtCodigo.getText().trim());
 	}
